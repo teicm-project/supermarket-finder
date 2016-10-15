@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Supermarket-Finder</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="button_search">Αναζητηση</string>
+    <string name="button_about">Σχετικα</string>
+    <string name="button_exit">Εξοδος</string>
+    <string name="text_info_1">Το Supermarket Finder σε βοηθάει να βρεις</string>
+    <string name="text_info_2">το κοντινότερο supermarket από τη θέση</string>
+    <string name="text_info_3">που βρίσκεσαι.</string>
+</resources>
