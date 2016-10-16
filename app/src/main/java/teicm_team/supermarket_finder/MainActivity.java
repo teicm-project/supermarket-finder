@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TAG String for Logs
+    //TAG String για τα Logs
     private static final String TAG = "LogMessage";
 
     @Override
@@ -17,14 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Example of Event Handler
+        //Event Handler για άνοιγμα του MapsActivity
         Button buttonSearch = (Button) findViewById(R.id.buttonSearch);
 
         buttonSearch.setOnClickListener(
                 new Button.OnClickListener(){
                     public void onClick(View v){
-                        //Code to open MapsActivity
-                        //startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                        startActivity(new Intent(MainActivity.this, MapsActivity.class));
                     }
                 }
         );
