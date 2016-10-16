@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TAG String για τα Logs
+    ///// TAG String για τα Logs /////
     private static final String TAG = "LogMessage";
 
     @Override
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Event Handler για άνοιγμα του MapsActivity
+        ///// Event Handler για άνοιγμα του MapsActivity /////
         Button buttonSearch = (Button) findViewById(R.id.buttonSearch);
 
         buttonSearch.setOnClickListener(
@@ -27,12 +27,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        //---
+        ///// Event Handler για κλείσιμο εφαρμογής /////
+        Button buttonExit = (Button) findViewById(R.id.buttonExit);
+
+        buttonExit.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        finish();
+                        System.exit(0);
+                    }
+                }
+        );
+        ///// Event Handler για άνοιγμα AboutActivity /////
+        Button buttonAbout = (Button) findViewById(R.id.buttonAbout);
+
+        buttonAbout.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                    }
+                }
+        );
 
         //Log for App
         Log.i(TAG, "onCreate");
     }
-    //Logs for App (Running, Paused, Stopped etc...)
+    ///// Logs for App (Running, Paused, Stopped etc...) /////
     @Override
     protected void onStart() {
         super.onStart();
