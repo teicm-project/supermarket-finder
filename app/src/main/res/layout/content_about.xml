@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="teicm_team.supermarket_finder.AboutActivity"
+    tools:showIn="@layout/activity_about">
+
+    <TextView
+        android:text="@string/text_about_foithtes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:id="@+id/textAboutFoithtes"
+        android:textSize="32sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/text_about_foit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textAboutFoithtes"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:id="@+id/textAboutFoit1"
+        android:textSize="22sp" />
+
+    <TextView
+        android:text="@string/text_about_foit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAboutFoit2"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textAboutFoit1"
+        android:layout_alignLeft="@+id/textAboutFoit1"
+        android:layout_alignStart="@+id/textAboutFoit1" />
+
+    <TextView
+        android:text="@string/text_about_foit3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAboutFoit3"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textAboutFoit2"
+        android:layout_alignLeft="@+id/textAboutFoit2"
+        android:layout_alignStart="@+id/textAboutFoit2" />
+
+    <TextView
+        android:text="@string/text_about_foit4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAboutFoit4"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textAboutFoit3"
+        android:layout_alignLeft="@+id/textAboutFoit5"
+        android:layout_alignStart="@+id/textAboutFoit5" />
+
+    <TextView
+        android:text="@string/text_about_foit5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAboutFoit5"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textAboutFoit4"
+        android:layout_alignLeft="@+id/textAboutFoit3"
+        android:layout_alignStart="@+id/textAboutFoit3" />
+
+    <TextView
+        android:text="@string/text_about_foit6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textAboutFoit6"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textAboutFoit5"
+        android:layout_alignLeft="@+id/textAboutFoit5"
+        android:layout_alignStart="@+id/textAboutFoit5" />
+
+    <TextView
+        android:text="@string/text_about_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:id="@+id/textAboutProject"
+        android:textSize="18sp"
+        android:textStyle="normal|italic"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
