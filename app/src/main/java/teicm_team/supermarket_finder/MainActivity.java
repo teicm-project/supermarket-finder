@@ -27,17 +27,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        ///// Event Handler για κλείσιμο εφαρμογής /////
-        Button buttonExit = (Button) findViewById(R.id.buttonExit);
-
-        buttonExit.setOnClickListener(
-                new Button.OnClickListener(){
-                    public void onClick(View v){
-                        finish();
-                        System.exit(0);
-                    }
-                }
-        );
         ///// Event Handler για άνοιγμα AboutActivity /////
         Button buttonAbout = (Button) findViewById(R.id.buttonAbout);
 
