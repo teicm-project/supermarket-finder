@@ -34,30 +34,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:id="@+id/buttonInfo"
+        android:id="@+id/buttonAbout"
         android:layout_alignRight="@+id/buttonSearch"
         android:layout_alignEnd="@+id/buttonSearch"
         android:layout_alignLeft="@+id/buttonSearch"
-        android:layout_alignStart="@+id/buttonSearch" />
+        android:layout_alignStart="@+id/buttonSearch"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
     <Button
         android:text="@string/button_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonInfo"
+        android:layout_above="@+id/buttonAbout"
         android:layout_centerHorizontal="true"
-        android:id="@+id/buttonSearch" />
-
-    <Button
-        android:text="@string/button_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonInfo"
-        android:layout_alignLeft="@+id/buttonInfo"
-        android:layout_alignStart="@+id/buttonInfo"
-        android:id="@+id/buttonExit"
-        android:layout_alignRight="@+id/buttonInfo"
-        android:layout_alignEnd="@+id/buttonInfo" />
+        android:id="@+id/buttonSearch"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
     <TextView
         android:text="@string/text_info_3"
