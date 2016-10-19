@@ -50,18 +50,6 @@
         android:id="@+id/buttonSearch"
         style="@style/Widget.AppCompat.Button.Colored" />
 
-    <Button
-        android:text="@string/button_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAbout"
-        android:layout_alignLeft="@+id/buttonAbout"
-        android:layout_alignStart="@+id/buttonAbout"
-        android:id="@+id/buttonExit"
-        android:layout_alignRight="@+id/buttonAbout"
-        android:layout_alignEnd="@+id/buttonAbout"
-        style="@style/Widget.AppCompat.Button.Colored" />
-
     <TextView
         android:text="@string/text_info_3"
         android:layout_width="wrap_content"
