@@ -57,6 +57,28 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        ///// Event Handler για άνοιγμα Lista_SuperMarkets /////
+        Button buttonList = (Button) findViewById(R.id.ButtonList);
+
+        buttonList.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        startActivity(new Intent(MainActivity.this, Lista_SuperMarkets.class));
+                    }
+                }
+        );
+
+        ///// Event Handler για άνοιγμα ListActivity /////
+        Button buttonLista = (Button) findViewById(R.id.buttonLista);
+
+        buttonLista.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        startActivity(new Intent(MainActivity.this, ListaActivity.class));
+                    }
+                }
+        );
+
         //Log for App
         Log.i(TAG, "onCreate");
     }
@@ -90,4 +112,24 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         Log.i(TAG, "onStop");
     }
+    public Button ButtonList;
+
+    public void init() {
+
+        ButtonList = (Button) findViewById(R.id.ButtonList);
+        ButtonList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toy = new Intent(MainActivity.this, Lista_SuperMarkets.class);
+            }
+        });
+
+                        init(); // 8a prepei na paei twrma epanw opos elege sto video
+    }
+
 }
+
+
+
+
+
