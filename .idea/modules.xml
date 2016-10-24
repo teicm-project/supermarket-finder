@@ -3,7 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/supermarketfinder.iml" filepath="$PROJECT_DIR$/supermarketfinder.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/supermarket-finder-master.iml" filepath="$PROJECT_DIR$/supermarket-finder-master.iml" />
+>>>>>>> master
     </modules>
   </component>
 </project>

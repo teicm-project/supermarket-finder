@@ -20,42 +20,61 @@
         android:id="@+id/textInfo1"
         android:textSize="15sp" />
 
-    <TextView
-        android:text="@string/text_info_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textInfo1"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textInfo2"
-        android:textSize="15sp" />
-
     <Button
         android:text="@string/button_about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:id="@+id/buttonAbout"
-        android:layout_alignRight="@+id/buttonSearch"
-        android:layout_alignEnd="@+id/buttonSearch"
-        android:layout_alignLeft="@+id/buttonSearch"
-        android:layout_alignStart="@+id/buttonSearch"
-        style="@style/Widget.AppCompat.Button.Colored" />
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_alignRight="@+id/ButtonList"
+        android:layout_alignEnd="@+id/ButtonList"
+        android:layout_alignLeft="@+id/ButtonList"
+        android:layout_alignStart="@+id/ButtonList"
+        android:textSize="15sp"/>
 
     <Button
         android:text="@string/button_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAbout"
-        android:layout_centerHorizontal="true"
         android:id="@+id/buttonSearch"
-        style="@style/Widget.AppCompat.Button.Colored" />
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_above="@+id/buttonAbout"
+        android:layout_alignLeft="@+id/buttonAbout"
+        android:layout_alignStart="@+id/buttonAbout"
+        android:layout_alignRight="@+id/buttonAbout"
+        android:layout_alignEnd="@+id/buttonAbout" />
 
     <TextView
-        android:text="@string/text_info_3"
+        android:text="@string/text_info_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textInfo2"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textInfo3" />
+        android:id="@+id/textInfo2"
+        android:textSize="15sp"
+        android:layout_below="@+id/textInfo1"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/button_katasthmata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ButtonList"
+        android:textColorLink="?attr/actionMenuTextColor"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_below="@+id/buttonAbout"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/button_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonLista"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_below="@+id/ButtonList"
+        android:layout_alignLeft="@+id/ButtonList"
+        android:layout_alignStart="@+id/ButtonList"
+        android:layout_alignRight="@+id/ButtonList"
+        android:layout_alignEnd="@+id/ButtonList" />
+
 
 </RelativeLayout>
