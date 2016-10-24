@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="teicm_team.supermarket_finder.MainActivity">
+
+    <TextView
+        android:text="@string/text_info_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:id="@+id/textInfo1"
+        android:textSize="15sp" />
+
+    <Button
+        android:text="@string/button_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/buttonAbout"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_alignRight="@+id/ButtonList"
+        android:layout_alignEnd="@+id/ButtonList"
+        android:layout_alignLeft="@+id/ButtonList"
+        android:layout_alignStart="@+id/ButtonList"
+        android:textSize="15sp"/>
+
+    <Button
+        android:text="@string/button_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonSearch"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_above="@+id/buttonAbout"
+        android:layout_alignLeft="@+id/buttonAbout"
+        android:layout_alignStart="@+id/buttonAbout"
+        android:layout_alignRight="@+id/buttonAbout"
+        android:layout_alignEnd="@+id/buttonAbout" />
+
+    <TextView
+        android:text="@string/text_info_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInfo2"
+        android:textSize="15sp"
+        android:layout_below="@+id/textInfo1"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/button_katasthmata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ButtonList"
+        android:textColorLink="?attr/actionMenuTextColor"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_below="@+id/buttonAbout"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/button_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_below="@+id/ButtonList"
+        android:layout_alignLeft="@+id/ButtonList"
+        android:layout_alignStart="@+id/ButtonList"
+        android:layout_alignRight="@+id/ButtonList"
+        android:layout_alignEnd="@+id/ButtonList" />
+
+
+</RelativeLayout>
