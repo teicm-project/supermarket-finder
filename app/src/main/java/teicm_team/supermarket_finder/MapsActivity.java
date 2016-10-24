@@ -2,19 +2,16 @@ package teicm_team.supermarket_finder;
 
 ///// Προστέθηκαν όσα apis χρειαστήκαμε /////
 import android.Manifest;
-<<<<<<< HEAD
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
-=======
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
->>>>>>> master
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,7 +21,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -222,6 +218,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
+        if(mLastLocation != null)
         getUserCurrentLonLat(mLastLocation);
     }
 
@@ -242,11 +239,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         // Μετακινεί την κάμερα στο σημείο του marker
-<<<<<<< HEAD
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
-=======
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
->>>>>>> master
 
         // Σταματάει να κάνει update την τοποθεσία
         if (mGoogleApiClient != null) {
@@ -275,8 +268,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     ///// Παίρνει τις συντεταγμένες του χρήστη /////
     private void getUserCurrentLonLat(Location location) {
-        userLongitude = location.getLongitude();
-        userLatitude = location.getLatitude();
+        //
+        //
+        // if(location != null) {
+            userLongitude = location.getLongitude();
+            userLatitude = location.getLatitude();
+        //}
 
         ///// Περνάει τις συντεταγμένες ώστε να υπολογισει την απόσταση και να βρει και την μικρότερη διαδρομή /////
         findClosestSuperMarket = new FindSuperMarket(userLongitude, userLatitude);
@@ -333,5 +330,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mLastLocation != null) {
+            getUserCurrentLonLat(mLastLocation);
+            setAllMarkersForSuperMarkets();
+        }
     }
 }
