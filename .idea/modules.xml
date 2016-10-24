@@ -5,12 +5,15 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/supermarketfinder.iml" filepath="$PROJECT_DIR$/supermarketfinder.iml" />
 =======
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
       <module fileurl="file://$PROJECT_DIR$/supermarket-finder-master.iml" filepath="$PROJECT_DIR$/supermarket-finder-master.iml" />
->>>>>>> master
     </modules>
   </component>
+<<<<<<< HEAD
 </project>
 =======
       <module fileurl="file://$PROJECT_DIR$/supermarketfinder.iml" filepath="$PROJECT_DIR$/supermarketfinder.iml" />
@@ -18,3 +21,6 @@
   </component>
 </project>
 >>>>>>> StamDach
+=======
+</project>
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c

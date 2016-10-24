@@ -27,8 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
         myDb = new DbOperator(this);
 
         myDb.addCoordinates(new Coordinates(1, 41.091098, 23.515123, "Lidl"));
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         myDb.addCoordinates(new Coordinates(13, 41.080962, 23.553687, "Κάντζας"));
         myDb.addCoordinates(new Coordinates(14, 41.079253, 23.540360, "Βασιλόπουλος"));
         myDb.addCoordinates(new Coordinates(15, 41.073701, 23.541441, "Lidl"));
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         ///// Γέμισμα του πίνακα με συντεταγμένες /////
@@ -69,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
 >>>>>>> master
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 
         ///// Event Handler για άνοιγμα του MapsActivity /////
         Button buttonSearch = (Button) findViewById(R.id.buttonSearch);

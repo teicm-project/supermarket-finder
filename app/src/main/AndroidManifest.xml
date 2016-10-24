@@ -47,15 +47,21 @@
             android:label="@string/title_activity_about"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
             android:theme="@style/AppTheme.NoActionBar"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ListView" />
         <activity android:name=".Lista_SuperMarkets">
@@ -66,7 +72,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListaActivity"></activity>
->>>>>>> master
     </application>
 
 </manifest>

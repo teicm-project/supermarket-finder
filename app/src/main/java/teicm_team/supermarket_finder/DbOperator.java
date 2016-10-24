@@ -4,14 +4,17 @@ import android.content.ContentValues;
 import android.content.Context;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -21,14 +24,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 >>>>>>> master
 =======
 >>>>>>> StamDach
+=======
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 /**
  * Created by Iwanna Pantoula on 17/10/2016.
  */
 public class DbOperator extends SQLiteOpenHelper {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "Supermarkets.db";
     public static final String TABLE_NAME = "Coordinates";
@@ -37,6 +48,7 @@ public class DbOperator extends SQLiteOpenHelper {
     public static final String COL_3 = "name";
     public static final String KEY_ID = "id";
 
+<<<<<<< HEAD
 
     public DbOperator(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -60,13 +72,21 @@ public class DbOperator extends SQLiteOpenHelper {
 <<<<<<< HEAD
 =======
 >>>>>>> StamDach
+=======
+    public DbOperator(Context context) {super(context, DATABASE_NAME, null, DATABASE_VERSION);}
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (KEY_ID INTEGER PRIMARY KEY, X DOUBLE, Y DOUBLE, name VARCHAR(50))");
     }
 
-    public void onUpgrade(SQLiteDatabase db, double oldVesion, int newVersion){
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
         onCreate(db);
     }
+
     ///// Η μέθοδος που εισχωρεί τα στοιχεία στην βάση /////
     public void addCoordinates(Coordinates coordinates){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -79,6 +99,7 @@ public class DbOperator extends SQLiteOpenHelper {
         db.close();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (X DOUBLE PRIMARY KEY,Y DOUBLE)");
     }
@@ -86,11 +107,15 @@ public class DbOperator extends SQLiteOpenHelper {
 >>>>>>> master
 =======
 >>>>>>> StamDach
+=======
+
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
     public boolean insertData(Double x,Double y) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,x);
         contentValues.put(COL_2,y);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         long result = db.insert(TABLE_NAME, null, contentValues);
@@ -100,6 +125,9 @@ public class DbOperator extends SQLiteOpenHelper {
 =======
         long result = db.insert(TABLE_NAME, null, contentValues);
 >>>>>>> StamDach
+=======
+        long result = db.insert(TABLE_NAME, null, contentValues);
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
         if(result == -1)
             return false;
         else
@@ -108,8 +136,11 @@ public class DbOperator extends SQLiteOpenHelper {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
     public Coordinates getCoordinates(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, new String []{ KEY_ID,
@@ -149,6 +180,7 @@ public class DbOperator extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> master
 =======
@@ -160,5 +192,7 @@ public class DbOperator extends SQLiteOpenHelper {
     }
 
 
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 
 }

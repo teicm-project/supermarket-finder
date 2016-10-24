@@ -4,23 +4,32 @@ package teicm_team.supermarket_finder;
 import android.Manifest;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+<<<<<<< HEAD
 >>>>>>> master
 =======
 >>>>>>> StamDach
+=======
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,7 +43,6 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 >>>>>>> StamDach
 import android.widget.Toast;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -242,6 +250,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
+        if(mLastLocation != null)
         getUserCurrentLonLat(mLastLocation);
     }
 
@@ -264,6 +273,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Μετακινεί την κάμερα στο σημείο του marker
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
 =======
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
@@ -271,6 +281,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 =======
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
 >>>>>>> StamDach
+=======
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+>>>>>>> e75febc8592a84402d446f2740e53024360b0f4c
 
         // Σταματάει να κάνει update την τοποθεσία
         if (mGoogleApiClient != null) {
@@ -299,8 +312,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     ///// Παίρνει τις συντεταγμένες του χρήστη /////
     private void getUserCurrentLonLat(Location location) {
-        userLongitude = location.getLongitude();
-        userLatitude = location.getLatitude();
+        //
+        //
+        // if(location != null) {
+            userLongitude = location.getLongitude();
+            userLatitude = location.getLatitude();
+        //}
 
         ///// Περνάει τις συντεταγμένες ώστε να υπολογισει την απόσταση και να βρει και την μικρότερη διαδρομή /////
         findClosestSuperMarket = new FindSuperMarket(userLongitude, userLatitude);
@@ -385,5 +402,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mLastLocation != null) {
+            getUserCurrentLonLat(mLastLocation);
+            setAllMarkersForSuperMarkets();
+        }
     }
 }
