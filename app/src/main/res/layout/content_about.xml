@@ -89,6 +89,7 @@
         android:layout_alignStart="@+id/textAboutFoit5" />
 
     <TextView
+<<<<<<< HEAD
         android:text="@string/text_about_foit7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -100,6 +101,8 @@
         android:textSize="22sp" />
 
     <TextView
+=======
+>>>>>>> StamDach
         android:text="@string/text_about_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

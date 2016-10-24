@@ -3,10 +3,14 @@ package teicm_team.supermarket_finder;
 ///// Προστέθηκαν όσα apis χρειαστήκαμε /////
 import android.Manifest;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> StamDach
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
+<<<<<<< HEAD
 =======
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +19,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 >>>>>>> master
+=======
+>>>>>>> StamDach
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,7 +28,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+<<<<<<< HEAD
 import android.support.v7.app.AlertDialog;
+=======
+import android.util.Log;
+>>>>>>> StamDach
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -50,7 +60,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
+<<<<<<< HEAD
     private GoogleMap mMap;
+=======
+    public static GoogleMap mMap;
+>>>>>>> StamDach
 
     //// Δήλωση όσων μεταβλητών θα χρειαστούμε παρακάτω /////
     GoogleApiClient mGoogleApiClient;
@@ -80,12 +94,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
+<<<<<<< HEAD
 
         ///// Ελέγχει αν το GPS είναι απενεργοποιημένο και ζητάει από τον χρήστη να το ενεργοποιήσει /////
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
         if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
             buildAlertMessageNoGps();
         }
+=======
+>>>>>>> StamDach
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -95,6 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
+<<<<<<< HEAD
     ///// Συνάρτηση που ζητάει από τον χρήστη αν θέλει να ανοίξει το  GPS /////
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -113,6 +131,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final AlertDialog alert = builder.create();
         alert.show();
     }
+=======
+>>>>>>> StamDach
 
     /**
      * Manipulates the map once available.
@@ -243,10 +263,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Μετακινεί την κάμερα στο σημείο του marker
 <<<<<<< HEAD
+<<<<<<< HEAD
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
 =======
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
 >>>>>>> master
+=======
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+>>>>>>> StamDach
 
         // Σταματάει να κάνει update την τοποθεσία
         if (mGoogleApiClient != null) {
@@ -283,6 +307,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         List<Coordinates> coordinates = myDb.getAllCoordinates();
         setAllMarkersForSuperMarkets();
         findClosestSuperMarket.closest(coordinates);
+<<<<<<< HEAD
+=======
+
+        String url = getUrl(userLatitude, userLongitude, FindSuperMarket.minimumLatitude, FindSuperMarket.minimumLongitude);
+        FetchUrl FetchUrl = new FetchUrl();
+        // Start downloading json data from Google Directions API
+        FetchUrl.execute(url);
+>>>>>>> StamDach
     }
 
     ///// Τοποθετεί τα σημάδια στον χάρτη για κάθε Σουπερ Μαρκετ /////
@@ -299,6 +331,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+<<<<<<< HEAD
+=======
+    private String getUrl(double originLat, double originLon, double destLat, double destLon) {
+        // Origin of route
+        String str_origin = "origin=" + originLat + "," + originLon;
+        // Destination of route
+        String str_dest = "destination=" + destLat + "," + destLon;
+        // Sensor enabled
+        String sensor = "sensor=false";
+        // Building the parameters to the web service
+        String parameters = str_origin + "&" + str_dest + "&" + sensor;
+        // Output format
+        String output = "json";
+        // Building the url to the web service
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
+
+        return url;
+    }
+
+>>>>>>> StamDach
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.

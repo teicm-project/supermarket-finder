@@ -5,7 +5,12 @@
     <string name="button_about">Σχετικα</string>
     <string name="button_exit">Εξοδος</string>
     <string name="text_info_1">Το Supermarket Finder σε βοηθάει να βρεις</string>
+<<<<<<< HEAD
     <string name="text_info_2">το κοντινότερο supermarket στις Σέρρες.</string>
+=======
+    <string name="text_info_2">το κοντινότερο supermarket στις Σέρρες</string>
+    <string name="text_info_3">από τη θέση που βρίσκεσαι.</string>
+>>>>>>> StamDach
     <string name="title_activity_about">Σχετικά</string>
     <string name="text_about_foithtes">Φοιτητές:</string>
     <string name="text_about_foit1">Ευάγγελος Πετρόπουλος (3785)</string>
@@ -14,8 +19,12 @@
     <string name="text_about_foit4">Μαυρουδής Παπάς (3814)</string>
     <string name="text_about_foit5">Σταμάτης Δαχρετζής (3820)</string>
     <string name="text_about_foit6">Στέργιος Τσέλιος (3798)</string>
+<<<<<<< HEAD
     <string name="text_about_foit7">Αρχιμήδης - Κέβιν Τσολάκου (3749)</string>
     <string name="text_about_project">Toy - Project Τεχνολογίες Λογισμικού (2016)</string>
     <string name="button_katasthmata">Καταστηματα</string>
     <string name="button_list">Λιστα</string>
+=======
+    <string name="text_about_project">Toy - Project Τεχνολογίες Λογισμικού (2016)</string>
+>>>>>>> StamDach
 </resources>

@@ -7,8 +7,11 @@
     android:fitsSystemWindows="true"
     tools:context="teicm_team.supermarket_finder.AboutActivity">
 
+<<<<<<< HEAD
     <include layout="@layout/content_about" />
 
+=======
+>>>>>>> StamDach
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,4 +26,9 @@
 
     </android.support.design.widget.AppBarLayout>
 
+<<<<<<< HEAD
+=======
+    <include layout="@layout/content_about" />
+
+>>>>>>> StamDach
 </android.support.design.widget.CoordinatorLayout>

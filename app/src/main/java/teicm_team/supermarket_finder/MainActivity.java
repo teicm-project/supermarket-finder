@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> StamDach
         myDb = new DbOperator(this);
 
         myDb.addCoordinates(new Coordinates(1, 41.091098, 23.515123, "Lidl"));
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         myDb.addCoordinates(new Coordinates(13, 41.080962, 23.553687, "Κάντζας"));
         myDb.addCoordinates(new Coordinates(14, 41.079253, 23.540360, "Βασιλόπουλος"));
         myDb.addCoordinates(new Coordinates(15, 41.073701, 23.541441, "Lidl"));
+<<<<<<< HEAD
 =======
         ///// Γέμισμα του πίνακα με συντεταγμένες /////
         DbOperator myDb = new DbOperator(this);
@@ -63,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         myDb.insertData(41.089762,23.598010); //Carrefour
         myDb.insertData(41.091098,23.515123); //Lidl
 >>>>>>> master
+=======
+>>>>>>> StamDach
 
         ///// Event Handler για άνοιγμα του MapsActivity /////
         Button buttonSearch = (Button) findViewById(R.id.buttonSearch);
@@ -85,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+<<<<<<< HEAD
         ///// Event Handler για άνοιγμα Lista_SuperMarkets /////
         Button buttonList = (Button) findViewById(R.id.ButtonList);
 
@@ -107,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+=======
+>>>>>>> StamDach
         //Log for App
         Log.i(TAG, "onCreate");
     }
@@ -140,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         Log.i(TAG, "onStop");
     }
+<<<<<<< HEAD
     public Button ButtonList;
 
     public void init() {
@@ -161,3 +171,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+=======
+}
+>>>>>>> StamDach
