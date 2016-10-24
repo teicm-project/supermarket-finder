@@ -67,7 +67,18 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        
+        ///// Event Handler για άνοιγμα ListActivity /////
+        Button buttonLista = (Button) findViewById(R.id.buttonLista);
 
+        buttonLista.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        startActivity(new Intent(MainActivity.this, ListaActivity.class));
+                    }
+                }
+        );
+        
         //Log for App
         Log.i(TAG, "onCreate");
     }
