@@ -67,7 +67,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> master
         ///// Event Handler για άνοιγμα ListActivity /////
         Button buttonLista = (Button) findViewById(R.id.buttonLista);
 
@@ -78,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> master
         //Log for App
         Log.i(TAG, "onCreate");
     }
