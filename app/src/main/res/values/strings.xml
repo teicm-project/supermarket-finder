@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Supermarket-Finder</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="button_search">Αναζητηση</string>
+    <string name="button_about">Σχετικα</string>
+    <string name="button_exit">Εξοδος</string>
+    <string name="text_info_1">Το Supermarket Finder σε βοηθάει να βρεις</string>
+    <string name="text_info_2">το κοντινότερο supermarket στις Σέρρες</string>
+    <string name="text_info_3">από τη θέση που βρίσκεσαι.</string>
+    <string name="title_activity_about">Σχετικά</string>
+    <string name="text_about_foithtes">Φοιτητές:</string>
+    <string name="text_about_foit1">Ευάγγελος Πετρόπουλος (3785)</string>
+    <string name="text_about_foit2">Ευθυμία Γκαγκαράτζα (3739)</string>
+    <string name="text_about_foit3">Ιωάννα Παντούλα (3846)</string>
+    <string name="text_about_foit4">Μαυρουδής Παπάς (3814)</string>
+    <string name="text_about_foit5">Σταμάτης Δαχρετζής (3820)</string>
+    <string name="text_about_foit6">Στέργιος Τσέλιος (3798)</string>
+    <string name="text_about_project">Toy - Project Τεχνολογίες Λογισμικού (2016)</string>
+</resources>
