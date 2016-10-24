@@ -35,11 +35,6 @@ public class ListaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        // Δημιουργία Back Button στο toolbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         /////Πέρνει τα δεδομένα απο την βάση και τα εμφανίζει/////
         mHelper = new ListaHelpedDB(this);
