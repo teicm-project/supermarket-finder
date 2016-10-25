@@ -89,6 +89,17 @@
         android:layout_alignStart="@+id/textAboutFoit5" />
 
     <TextView
+        android:text="@string/text_about_foit7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textAboutFoit6"
+        android:layout_alignLeft="@+id/textAboutFoit6"
+        android:layout_alignStart="@+id/textAboutFoit6"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView"
+        android:textSize="22sp" />
+
+    <TextView
         android:text="@string/text_about_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

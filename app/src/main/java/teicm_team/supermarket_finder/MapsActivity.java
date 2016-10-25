@@ -1,10 +1,17 @@
 package teicm_team.supermarket_finder;
 
 ///// Προστέθηκαν όσα apis χρειαστήκαμε /////
-import android.*;
 import android.Manifest;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,8 +19,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
-
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -27,13 +37,17 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import java.util.List;
+
+import static teicm_team.supermarket_finder.MainActivity.myDb;
 
 ///// Κάνουμε implement τα απαραίτητα callbacks (όλα εκτός του OnMapReadyCallback που υπήρχε /////
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener, LocationListener{
+        GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    private GoogleMap mMap;
+    //private GoogleMap mMap;
+    public static GoogleMap mMap;
 
     //// Δήλωση όσων μεταβλητών θα χρειαστούμε παρακάτω /////
     GoogleApiClient mGoogleApiClient;
@@ -42,6 +56,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Marker mCurrLocationMarker;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
+    double userLongitude;
+    double userLatitude;
+    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+    public FindSuperMarket findClosestSuperMarket;
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +74,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ///// Ελέγχει την έκδοση του Android και αν είναι Android M ζήτάει permission για να /////
         ///// χρησιμοποιήσει το gps /////
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
+        }
+
+        ///// Ελέγχει αν το GPS είναι απενεργοποιημένο και ζητάει από τον χρήστη να το ενεργοποιήσει /////
+        final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            buildAlertMessageNoGps();
         }
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
+    ///// Συνάρτηση που ζητάει από τον χρήστη αν θέλει να ανοίξει το  GPS /////
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Το GPS είναι απενεργοποιημένο, θα ήθελες να το ενεργοποιήσεις;")
+                .setCancelable(false)
+                .setPositiveButton("Ναι", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("Όχι", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     /**
      * Manipulates the map once available.
@@ -68,27 +120,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
         ///// Αρχικοποιεί τα Google Play Services που χρειάζονται για να βρεί την τοποθεσία /////
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
             }
-        }
-        else {
+        } else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
     }
 
     ///// Δημιουργεί τον Google Api Client /////
-    protected synchronized void buildGoogleApiClient(){
+    protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -99,7 +151,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     ///// Ζητάει το permission από τον χρήστη (Μόνο για Android M) /////
-    public boolean checkLocationPermission(){
+    public boolean checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -165,6 +217,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 == PackageManager.PERMISSION_GRANTED) {
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
+
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if(mLastLocation != null)
+        getUserCurrentLonLat(mLastLocation);
     }
 
     ///// Όποτε αλλάζει η τοποθεσία παίρνουμε τις συντεταγμένες του χρήστη /////
@@ -184,7 +241,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         // Μετακινεί την κάμερα στο σημείο του marker
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
 
         // Σταματάει να κάνει update την τοποθεσία
         if (mGoogleApiClient != null) {
@@ -194,11 +251,117 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onConnectionSuspended(int i) {
+        Toast.makeText(this, "Οι υπηρεσίες τοποθεσίας έχουν ανασταλεί. Παρακαλώ ξανά συνδεθείτε", Toast.LENGTH_LONG).show();
+    }
 
+    ///// Στην περίπτωση που χαθέι η σύνδεση να  ειδοποιήσει τον χρήστη /////
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        if(connectionResult.hasResolution()) {
+            try{
+                connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            }catch(IntentSender.SendIntentException e){
+                e.printStackTrace();
+            }
+        }else{
+            Toast.makeText(this, "Οι υπηρεσίες τοποθεσίας έχουν ανασταλεί. Παρακαλώ ξανά συνδεθείτε" + connectionResult.getErrorCode(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    ///// Παίρνει τις συντεταγμένες του χρήστη /////
+    private void getUserCurrentLonLat(Location location) {
+        //
+        //
+        // if(location != null) {
+            userLongitude = location.getLongitude();
+            userLatitude = location.getLatitude();
+        //}
+
+        ///// Περνάει τις συντεταγμένες ώστε να υπολογισει την απόσταση και να βρει και την μικρότερη διαδρομή /////
+        findClosestSuperMarket = new FindSuperMarket(userLongitude, userLatitude);
+        List<Coordinates> coordinates = myDb.getAllCoordinates();
+        setAllMarkersForSuperMarkets();
+        findClosestSuperMarket.closest(coordinates);
+
+        String url = getUrl(userLatitude, userLongitude, FindSuperMarket.minimumLatitude, FindSuperMarket.minimumLongitude);
+        FetchUrl FetchUrl = new FetchUrl();
+        // Start downloading json data from Google Directions API
+        FetchUrl.execute(url);
+    }
+
+    ///// Τοποθετεί τα σημάδια στον χάρτη για κάθε Σουπερ Μαρκετ /////
+    private void setAllMarkersForSuperMarkets(){
+        List<Coordinates> coordinates = myDb.getAllCoordinates();
+
+        for(Coordinates coordinate : coordinates) {
+            final LatLng latLon = new LatLng(coordinate.getLatitude(), coordinate.getLongitude());
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(latLon);
+            markerOptions.title("Super Market: " + coordinate.getName());
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+            mCurrLocationMarker = mMap.addMarker(markerOptions);
+        }
+    }
+
+    private String getUrl(double originLat, double originLon, double destLat, double destLon) {
+        // Origin of route
+        String str_origin = "origin=" + originLat + "," + originLon;
+        // Destination of route
+        String str_dest = "destination=" + destLat + "," + destLon;
+        // Sensor enabled
+        String sensor = "sensor=false";
+        // Building the parameters to the web service
+        String parameters = str_origin + "&" + str_dest + "&" + sensor;
+        // Output format
+        String output = "json";
+        // Building the url to the web service
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
+
+        return url;
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Maps Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
     }
 
     @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    public void onStart() {
+        super.onStart();
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mLastLocation != null) {
+            getUserCurrentLonLat(mLastLocation);
+            setAllMarkersForSuperMarkets();
+        }
     }
 }
