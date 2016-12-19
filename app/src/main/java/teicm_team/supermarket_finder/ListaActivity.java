@@ -43,14 +43,12 @@ public class ListaActivity extends AppCompatActivity {
         updateUI();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
-
+    
     ///// δημιουργει το dialog που θα εμφανίζεται όταν πατάμε /////
     ///// το plus button για να γράψουμε αύτο που θα μπεί στην /////
     ///// βάση μας και θα το μεφανίζε μετά/////
@@ -90,7 +88,6 @@ public class ListaActivity extends AppCompatActivity {
     }
 
     ///// όταν επιλεγεί το κουμπάκι "TO ΠΗΡΑ" σβήνει την εγγραφή απο την βάση/////
-
     public void deleteTask(View view) {
         View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
@@ -135,6 +132,4 @@ public class ListaActivity extends AppCompatActivity {
         cursor.close();
         db.close();
     }
-
-
 }
